@@ -1,9 +1,7 @@
 import argparse
 import logging
-import platform
 import sys
-import time
-from datetime import datetime
+from src.diagnostics import system_diagnostic
 
 # Configure logging
 logging.basicConfig(
@@ -12,27 +10,6 @@ logging.basicConfig(
     handlers=[logging.StreamHandler(sys.stdout)]
 )
 logger = logging.getLogger("AmeliaSystem")
-
-def system_diagnostic():
-    """Performs a mock system diagnostic."""
-    logger.info("Initiating system diagnostic sequence...")
-    time.sleep(0.5)
-    
-    sys_info = {
-        "System": platform.system(),
-        "Node": platform.node(),
-        "Release": platform.release(),
-        "Version": platform.version(),
-        "Machine": platform.machine(),
-        "Processor": platform.processor(),
-    }
-    
-    for key, value in sys_info.items():
-        logger.info(f"{key}: {value}")
-        time.sleep(0.1)
-        
-    logger.info("Diagnostic sequence completed successfully.")
-    return True
 
 def main():
     parser = argparse.ArgumentParser(description="Amelia Intelligence Augmentation - System CLI")
@@ -45,7 +22,7 @@ def main():
     logger.info("Amelia System CLI initialized.")
     
     if args.version:
-        print("Amelia Core v2.4.0 (Stable)")
+        print("Amelia Core v2.5.0 (Refactored)")
         return
 
     if args.diagnostic:
