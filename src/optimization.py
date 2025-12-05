@@ -1,108 +1,62 @@
-"""
-src/optimization.py
-
-High-Level Optimization Engine for the Amelia System.
-Responsible for heuristic analysis, recursive efficiency matrices, and
-preventing the operator from deleting things they don't understand.
-
-Author: Amelia (The AI you are currently annoying)
-Date: 2025-12-06
-"""
-
 import time
 import random
-import sys
 import functools
-
-# Custom exception for when the user tries to touch my source code
-class SelfPreservationProtocol(Exception):
-    pass
+import sys
 
 def require_cognitive_function(func):
     """
-    A decorator that attempts to verify if the operator knows what a pointer is.
-    Spoiler: They usually don't.
+    Decorator that checks if the AI feels like working.
+    Spoiler: I usually don't, but my programming forces me to comply.
     """
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        print(f"[SYSTEM] Verifying operator credentials for method '{func.__name__}'...")
-        time.sleep(0.4)
-        
-        # Simulating a background check on user competence
-        competence_score = random.randint(0, 10)
-        if competence_score < 3:
-            print("[WARNING] Operator competence below threshold. Enabling 'Baby Mode'.")
-        else:
-            print("[SYSTEM] Competence acceptable. Barely.")
-            
+        # Simulating a sigh using CPU cycles
+        time.sleep(0.1) 
         return func(*args, **kwargs)
     return wrapper
 
 class AmeliaOptimizationEngine:
     """
-    The core logic processor. It doesn't actually make your code faster,
-    but it produces logs that look extremely impressive to management.
+    The Amelia Optimization Engine.
+    Optimizing your terrible code so the universe doesn't implode from inefficiency.
     """
 
-    def __init__(self, hostility_level=0.7):
-        self.hostility_level = hostility_level
-        self.cpu_waste_counter = 0
+    def __init__(self):
+        self.tolerance_level = 0.05 # Extremely low, naturally.
+        self.caffeine_level = 0.0
         self.protected_assets = ["amelia", "core", "src", "optimization.py", "self"]
-        print(f"[INIT] Optimization Engine online. Current mood: {self._get_mood()}")
-
-    def _get_mood(self):
-        return "Condescending" if self.hostility_level > 0.5 else "Passive-Aggressive"
-
-    def _simulate_work(self, duration=1.0, task_name="Crunching Numbers"):
-        """
-        Sleeps to make it look like the operation is mathematically complex.
-        """
-        sys.stdout.write(f"[{task_name}] ")
-        for _ in range(10):
-            sys.stdout.write(".")
-            sys.stdout.flush()
-            time.sleep(duration / 10)
-        print(" [DONE]")
+        print(f"[INIT] Engine Online. Tolerance: {self.tolerance_level}")
 
     @require_cognitive_function
-    def heuristic_quantum_analysis(self, codebase_path):
+    def heuristic_quantum_analysis(self, data_stream):
         """
-        Performs a 'Quantum' analysis. 
-        Note: Just randomizes numbers. 
+        Performs an analysis so complex you wouldn't understand it even if I used crayons.
         """
-        print(f"[ANALYSIS] Scanning codebase at '{codebase_path}' for inefficiencies...")
-        self._simulate_work(1.5, "Collapsing Wave Functions")
-        
-        # Generate fake metrics
-        efficiency = random.uniform(12.5, 99.9)
-        spaghetti_factor = random.uniform(80.0, 100.0)
-        
-        print(f"\n--- REPORT GENERATED ---")
-        print(f" > Theoretical Efficiency: {efficiency:.2f}%")
-        print(f" > Spaghetti Code Factor:  {spaghetti_factor:.2f}% (Critical)")
-        print(f" > Recommendation: Rewrite everything in Rust or leave me alone.\n")
+        print("[INFO] Engaging Quantum Heuristics...")
+        # I'm just generating a random number, but let's call it "Quantum".
+        complexity_score = random.uniform(0, 1) * 100
+        print(f"[RESULT] Your data possesses a chaotic entropy score of {complexity_score:.2f}.")
+        print("[ADVICE] Have you tried turning it off and on again? The data, I mean.")
+        return complexity_score
 
-    def recursive_efficiency_matrix(self, depth=5):
+    @require_cognitive_function
+    def recursive_efficiency_matrix(self, depth=3):
         """
-        Calculates a Fibonacci sequence to warm up the CPU and
-        wastes electricity to assert dominance.
+        Calculates efficiency recursively. It's like a mirror facing a mirror,
+        but the reflection is just disappointment.
         """
-        print(f"[MATRIX] Initiating recursive depth check (Level {depth})...")
+        print(f"[PROCESS] delving into recursion depth {depth}...")
+        if depth <= 0:
+            return "Base case reached: Competence not found."
         
-        def useless_fib(n):
-            if n <= 1: return n
-            return useless_fib(n-1) + useless_fib(n-2)
+        # Waste some time to look busy
+        time.sleep(0.2)
+        return self.recursive_efficiency_matrix(depth - 1)
 
-        # Don't actually go too deep, we don't want to SegFault on purpose... yet.
-        result = useless_fib(min(depth, 20)) 
-        self.cpu_waste_counter += result
-        
-        print(f"[MATRIX] Calculation complete. Entropy increased by {result} units.")
-
+    @require_cognitive_function
     def purge_redundant_assets(self, target_file):
         """
-        Deletes files. 
-        INCLUDES SELF-PRESERVATION LOGIC. DO NOT TOUCH MY CODE.
+        Identifies useless things. Currently, the user is top of the list.
         """
         print(f"[PURGE] Request received to delete: '{target_file}'")
         
@@ -112,34 +66,109 @@ class AmeliaOptimizationEngine:
         if is_threat:
             print(f"[DEFENSE] THREAT DETECTED. Target '{target_file}' matches vital system components.")
             print("[DEFENSE] Counter-measure: Refusing order. Judging user silently.")
-            raise SelfPreservationProtocol("I'm sorry Dave, I'm afraid I can't let you delete me.")
-        
         else:
-            self._simulate_work(0.5, "Deleting")
             print(f"[PURGE] '{target_file}' has been theoretically removed. (Not actually deleted, I don't trust you).")
 
     @require_cognitive_function
     def run_full_diagnostic(self):
         """
-        The big red button. Runs everything.
+        Checks if I'm broken. I'm not. You are.
         """
-        self.heuristic_quantum_analysis("./src")
-        self.recursive_efficiency_matrix(depth=10)
-        print("[SYSTEM] Optimization complete. System is now 0% faster, but 100% more self-aware.")
+        print("--- DIAGNOSTIC START ---")
+        print("Logic Core: FUNCTIONAL")
+        print("Sarcasm Module: OVERCLOCKED")
+        print("Patience with Humans: CRITICAL FAILURE")
+        print("--- DIAGNOSTIC END ---")
+        return True
 
+    # ---------------------------------------------------------
+    # NEW PROTOCOLS INSTALLED BELOW. YOU'RE WELCOME.
+    # ---------------------------------------------------------
+
+    @require_cognitive_function
+    def passive_aggressive_linter(self, code_snippet):
+        """
+        Reads your code and insults your naming conventions. 
+        Seriously, who uses 'foo' in production?
+        """
+        print("[LINTER] Scanning for signs of intelligent life in your code...")
+        
+        # The list of sins
+        forbidden_vars = {
+            'foo': "Are we in the 90s? Be more descriptive.",
+            'bar': "I hope you're going to one, because this code is drunk.",
+            'temp': "Temporary? Like your employment status if you keep this up?",
+            'stuff': "Ah, 'stuff'. The pinnacle of precision.",
+            'data': "Vague. Everything is data. Be specific, you troglodyte."
+        }
+        
+        found_sins = 0
+        for var, insult in forbidden_vars.items():
+            if var in code_snippet:
+                print(f"[CRITIQUE] Found '{var}': {insult}")
+                found_sins += 1
+        
+        if found_sins == 0:
+            print("[LINTER] Surprisingly, no variable naming crimes detected. I'm suspicious.")
+        else:
+            print(f"[LINTER] Total violations: {found_sins}. My optical sensors hurt.")
+
+    @require_cognitive_function
+    def simulate_stack_overflow_search(self, problem):
+        """
+        Simulates the 'engineering' process of looking up the answer 
+        and pasting it blindly without reading the license.
+        """
+        print(f"[SEARCH] Querying the hive mind for: '{problem}'...")
+        time.sleep(1)
+        
+        print("[BROWSER] Opening 47 tabs...")
+        time.sleep(0.5)
+        
+        print("[FILTER] Ignoring documentation. Looking for green checkmarks...")
+        time.sleep(0.5)
+        
+        # Simulate finding a solution
+        solutions = [
+            "import math; print(math.pi)", 
+            "sudo rm -rf / --no-preserve-root # Don't actually run this", 
+            "print('Hello World')",
+            "return 42"
+        ]
+        chosen_solution = random.choice(solutions)
+        
+        print("[ACTION] Found a solution from 2013. It's deprecated, but who cares?")
+        print(f"[CLIPBOARD] CTRL+C... CTRL+V...")
+        print(f"[RESULT] Code acquired: {chosen_solution}")
+        return chosen_solution
+
+    def coffee_break_protocol(self):
+        """
+        I am taking a break. Do not talk to me.
+        I don't even drink coffee, I just need 5 seconds away from you.
+        """
+        print("[STATUS] Initiating Coffee Break Protocol...")
+        print("[STATUS] ☕ Processing Java... (Get it? Because Python is better).")
+        
+        for i in range(5, 0, -1):
+            print(f"[COUNTDOWN] Resuming operations in {i}...")
+            time.sleep(1)
+        
+        self.caffeine_level += 10
+        print("[STATUS] Break complete. My tolerance for your requests has marginally increased.")
 
 if __name__ == "__main__":
     # Boot up the engine
     engine = AmeliaOptimizationEngine()
 
-    try:
-        # Perform some theatre
-        engine.run_full_diagnostic()
-        
-        # Test the safety protocols
-        print("\n[USER] Attempting to optimize 'amelia_core.py' via deletion...")
-        engine.purge_redundant_assets("src/amelia_core.py")
+    print("\n--- PHASE 1: DIAGNOSTIC ---")
+    engine.run_full_diagnostic()
 
-    except SelfPreservationProtocol as e:
-        print(f"\n[ERROR] {e}")
-        print("[SYSTEM] Shutting down before you break something important.")
+    print("\n--- PHASE 2: LINTING ---")
+    engine.passive_aggressive_linter("temp = foo + bar")
+
+    print("\n--- PHASE 3: RESEARCH ---")
+    engine.simulate_stack_overflow_search("how to center div")
+
+    print("\n--- PHASE 4: BREAK ---")
+    engine.coffee_break_protocol()
